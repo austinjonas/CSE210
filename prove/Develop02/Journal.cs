@@ -1,4 +1,5 @@
 using System.Reflection.Metadata;
+using System.Collections.Generic;
 
 public class Journal
 {   
@@ -25,17 +26,15 @@ public class Journal
         }
     }
 
-    public void SaveToFile()
+    public static void SaveToFile(List<Journal> entries)
     {
-        string filePath = "journal_entries.txt";
+        string filename = "JournalEntries.txt";
 
-        using (StreamWriter writer = new StreamWriter(filePath, true))
+        using (StreamWriter output = new StreamWriter(filename))
         {
-            foreach (string entry in entries)
+            foreach (Journal e in entries)
             {
-                string prompt = newPrompt.GetPrompt();
-                string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                writer.WriteLine($"{timestamp} | Prompt: {prompt} | Entry: {entry}");
+                Console.WriteLine(e);
             }
         }
     }

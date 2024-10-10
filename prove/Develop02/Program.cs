@@ -6,6 +6,7 @@ public class Program
     {
         //calling the class, allows the class to be used in this file.
         Journal newJournal = new();
+        Journal displayJournal = new();
 
         List<string> prmpt = new List<string>();
         int option = 0;
@@ -31,6 +32,7 @@ public class Program
                 DateTime theCurrentTime = DateTime.Now;
                 string dateText = theCurrentTime.ToShortDateString();
                 Console.WriteLine($"Date: {dateText} - Prompt: ???");
+                displayJournal.DisplayJournal();
             }
             else if (option == 3)
             {
@@ -38,7 +40,7 @@ public class Program
             }
             else if (option == 4)
             {
-
+                // saveToFile.SaveToFile()
             }
             else if (option == 5)
             {
