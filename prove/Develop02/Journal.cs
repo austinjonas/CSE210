@@ -5,6 +5,8 @@ public class Journal
 {   
     Prompt newPrompt = new();
     public List<string> entries = new List<string>();
+    public List<string> prompts = new List<string>();
+    public List<DateTime> datetime = new();
     //public Prompt randomPrompt = new Prompt();
 
     public void WriteJournal()
@@ -14,49 +16,51 @@ public class Journal
         Console.Write("enter here: ");
         string entry = Console.ReadLine();
         entries.Add(entry);
+        prompts.Add(prompt);
+        //adds the current date/time into the datetime list above.
+        datetime.Add(DateTime.Now);
     }
 // goal in the next one is to save the date/time, prompt, and entry
     
     public void DisplayJournal()
     {
         Console.WriteLine("here's your entry: ");
-        foreach (string entry in entries)
+        
+        for (int i = 0; i < entries.Count; i++)
         {
-            Console.WriteLine($"{entry}");
+            Console.WriteLine($"{datetime[i]} | \n{prompts[i]} | \n{entries[i]}\n");
         }
     }
 
-    public static void SaveToFile(List<Journal> entries)
+    public void SaveToFile()
     {
         string filename = "JournalEntries.txt";
 
         using (StreamWriter output = new StreamWriter(filename))
         {
-            foreach (Journal e in entries)
+            for (int i = 0; i < entries.Count; i++)
             {
-                Console.WriteLine(e);
+                output.WriteLine($"{datetime[i]} | {prompts[i]} | {entries[i]}");
             }
+            Console.WriteLine("Successfully saved your file!");
         }
     }
 
-    public void ReadFile()
+    public void LoadFile()
     {
-        string filePath = "journal_entries.txt";
-        if (File.Exists(filePath))
+        string filename = "JournalEntries.txt";
+        using (StreamReader reader = new StreamReader(filename))
         {
-            Console.WriteLine("Reading entries from file:");
-            using (StreamReader reader = new StreamReader(filePath))
+            string line = reader.ReadLine();
+            while (line != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
+                string[] parts = line.Split('|');
+                datetime.Add(DateTime.Parse(parts[0]));
+                prompts.Add(parts[1]);
+                entries.Add(parts[2]);
+
+                line = reader.ReadLine();
             }
-        }
-        else
-        {
-            Console.WriteLine("No entries found. The journal is empty.");
         }
     }
 }

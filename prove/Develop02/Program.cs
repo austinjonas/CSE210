@@ -5,8 +5,7 @@ public class Program
     static void Main(string[] args)
     {
         //calling the class, allows the class to be used in this file.
-        Journal newJournal = new();
-        Journal displayJournal = new();
+        Journal journal = new();
 
         List<string> prmpt = new List<string>();
         int option = 0;
@@ -25,26 +24,26 @@ public class Program
 
             if (option == 1)
             {
-                newJournal.WriteJournal();
+                journal.WriteJournal();
             }
             else if (option == 2)
             {
-                DateTime theCurrentTime = DateTime.Now;
-                string dateText = theCurrentTime.ToShortDateString();
-                Console.WriteLine($"Date: {dateText} - Prompt: ???");
-                displayJournal.DisplayJournal();
+                journal.DisplayJournal();
             }
             else if (option == 3)
             {
-
+                journal.LoadFile();
             }
             else if (option == 4)
             {
-                // saveToFile.SaveToFile()
+                journal.SaveToFile();
             }
             else if (option == 5)
             {
+                Console.ReadKey();
 
+        // Exit the program
+                Environment.Exit(0);
             }
         }
     }
