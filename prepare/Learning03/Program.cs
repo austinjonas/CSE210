@@ -5,21 +5,25 @@ class Program
     static void Main(string[] args)
     {
         Fraction f1 = new Fraction();
-        Console.WriteLine(f1);
+        Console.WriteLine(f1.GetFractionString());
         Console.WriteLine(f1.GetDecimalValue());
 
-        Fraction f2 = new Fraction(1);
+        Fraction f2 = new Fraction(2);
         Console.WriteLine(f2.GetFractionString());
         Console.WriteLine(f2.GetDecimalValue());
 
-        Fraction f3 = new Fraction(1, 10);
+        Fraction f3 = new Fraction(1, 4);
         Console.WriteLine(f3.GetFractionString());
         Console.WriteLine(f3.GetDecimalValue());
 
-        Fraction f4 = new Fraction(19, 200);
+        Fraction f4 = new Fraction(1000, 342342);
         Console.WriteLine(f4.GetFractionString());
         Console.WriteLine(f4.GetDecimalValue());
+
+
+        
     }
+    
 }
 
 

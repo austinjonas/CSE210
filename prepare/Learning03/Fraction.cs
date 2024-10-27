@@ -4,12 +4,11 @@ using System;
 
 public class Fraction
 {
-    private int _top;
-    private int _bottom;
+    int _top;
+    int _bottom;
 
     public Fraction()
     {
-        // Default to 1/1
         _top = 1;
         _bottom = 1;
     }
@@ -28,17 +27,13 @@ public class Fraction
 
     public string GetFractionString()
     {
-        string text = $"{_top} / {_bottom}";
+        string text = $"{_top}/{_bottom}";
         return text;
     }
-
     public double GetDecimalValue()
     {
         return _top / _bottom;
     }
-
-
-    
 }
 // using System;
 
