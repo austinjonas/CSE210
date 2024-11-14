@@ -1,4 +1,6 @@
 using System;
+using System.Drawing;
+using System.Globalization;
 
 class Program
 {
@@ -6,51 +8,29 @@ class Program
 
     static void Main(string[] args)
     {
-        DisplayMessage();
-        
-        string username = GetUserName("Please enter your name: ");
-        int userNumber = FavoriteNumber();
-        
-        int squareNumber = SquareNumber(userNumber);
-        
-        DisplayResult(username, squareNumber);
-         
-    }    
-
-    //this is the welcome message
-    static void DisplayMessage()
-        {
-            Console.WriteLine("Welcome to the program!");
-        }
+       
+       List<Shape> shapes = new List<Shape>();
+       
+       
     
-    static string GetUserName(string prompt)
-        {
-            Console.Write("Please enter your name: ");
-            string name = Console.ReadLine();
-            
-            return name;
-        }
+       Square square1 = new Square("Purple", 2); 
+       shapes.Add(square1);
+    //    square1.WriteShape();
 
-    static int FavoriteNumber()
-    {
-        Console.Write("Please enter your favorite number: ");
-        string favNumber = Console.ReadLine();
-        int number = int.Parse(favNumber);
-        
-        return number;
+       Rectangle rectangle1 = new Rectangle("brown", 2, 4);
+       shapes.Add(rectangle1);
+    //    rectangle1.WriteShape();
 
-    }
+       Circle circle1 = new Circle("Blue", 1.3);
+       shapes.Add(circle1);
 
-    static int SquareNumber(int number)
-    {
-        int square = number * number;
-        return square;
+       foreach(Shape sh in shapes)
+       {
+        string color = sh.GetColor();
+        double area = sh.GetArea();
+
+        Console.WriteLine($"The area is {area} for the {color} colored shape.");
+       }
+    //    circle1.WriteShape();
     }
-    
-    static void DisplayResult(string name, int square)
-    {
-        Console.WriteLine($"{name}, your square number is {square}.");
-    }
-        
-    
 }
