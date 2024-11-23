@@ -1,0 +1,2 @@
+Finish Assignment|Complete the C# homework|100
+Daily Workout|Exercise for 30 minutes|50
